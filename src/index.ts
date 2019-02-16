@@ -1,5 +1,7 @@
+// src/index.ts
+
 import Vue from "vue";
-//import HelloComponent from './components/Hello.vue';
+//import from './components/';
 
 let v = new Vue({
     el: "#app",

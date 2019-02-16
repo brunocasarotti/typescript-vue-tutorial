@@ -8,32 +8,30 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from "vue";
 
-export default Vue.extend({
-  props: ["name", "initialEnthusiasm"],
-  data() {
-    return {
-      enthusiasm: this.initialEnthusiasm
-    };
-  },
-  methods: {
+
+<script lang="ts">
+import { Vue, Component, Prop } from "vue-property-decorator";
+
+export default class HelloComponent extends Vue {
+    @Prop() name!: string;
+    @Prop() initialEnthusiasm!: number;
+
+    enthusiasm = this.initialEnthusiasm;
+
     increment() {
-      this.enthusiasm++;
-    },
+        this.enthusiasm++;
+    }
     decrement() {
-      if (this.enthusiasm > 1) {
-        this.enthusiasm--;
-      }
+        if (this.enthusiasm > 1) {
+            this.enthusiasm--;
+        }
     }
-  },
-  computed: {
-    exclamationMarks(): string {
-      return Array(this.enthusiasm + 1).join("!");
+
+    get exclamationMarks(): string {
+        return Array(this.enthusiasm + 1).join('!');
     }
-  }
-});
+}
 </script>
 
 <style>
